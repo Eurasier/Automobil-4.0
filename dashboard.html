@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link href="dashboard1_style.css" type="text/css" rel="stylesheet">
+	
+	<script>
+		
+		function Zeit(){
+		var d = new Date();
+		document.getElementById("date").innerHTML = d.getDate()+"."+d.getMonth()+"."+d.getFullYear();
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		
+		}
+		var myVar = setInterval(function(){Zeit()},1000);
+		
+		function show_menu(){
+		var menu = document.getElementById('dropdown_menu');
+
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+		}
+		
+		
+	</script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="left">
+				<p onclick="show_menu();">Fahrerprofil</p>
+			</li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
+			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
+			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+		</ul>
+	</nav>
+	
+		<ul id="dropdown_menu" style="visibility:hidden;">
+			<div id="dropdown_div">
+				<li class="drop"><a href="index.html">Fahrerprofil auswählen</a></li>
+				<li class="drop"><a href="index.html">Fahrerprofil anlegen</a></li>
+			</div>
+		</ul>
+		
+	 <!-- Inhalt -->
+	 <div class="container">
+      <div id="sos" onclick="location.href='notyet.html';">
+        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
+      </div>
+	  
+	  <img src="auto.png" id="car" width="50%" height="50%" alt="submit"/>
+	  
+      
+        <button class="btn" id="b1" onclick="location.href='notyet.html';">Rechter Spiegel</button>
+        <button class="btn" id="b2" onclick="location.href='notyet.html';">Scheibenwischer</button>
+        <button class="btn" id="b3" onclick="location.href='notyet.html';">Linker Spiegel</button>
+      
+       
+        <button class="btn" id="b4" onclick="location.href='notyet.html';">Licht</button>
+        <button class="btn" id="b5" onclick="location.href='notyet.html';">Motortemperatur</button>
+      
+	  
+        <button class="btn" id="b6" onclick="location.href='notyet.html';">Reifendruck</button>
+        <button class="btn" id="b7" onclick="location.href='notyet.html';">Reifendruck</button>
+      
+	  <p class="lines">
+        <img onclick="location.href='home.html';" src="back.png" width="120" height="120" style="margin-left:0%; position:absolute;top:80%;left:8%;"/>
+        <img onclick="location.href='home.html';" src="home.png" width="80" height="80" style="margin-left:3%; position:absolute;top:83%;left:17%;"/>
+      </p>
+	  
+
+
+    </div> <!-- /container -->
+</body>
+</html>

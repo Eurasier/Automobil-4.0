@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link href="index_style.css" type="text/css" rel="stylesheet">
+	
+	<script>
+		
+		function Zeit(){
+		var d = new Date();
+		document.getElementById("date").innerHTML = d.getDate()+"."+d.getMonth()+"."+d.getFullYear();
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		
+		}
+		var myVar = setInterval(function(){Zeit()},1000);
+		
+		function show_menu(id){
+		var menu = document.getElementById(id);
+
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+		}
+		
+		var personen = new Array();
+		function speichern() {
+           var person = new Person(document.getElementById('nachname').value,
+                                   document.getElementById('vorname').value,
+                                   document.getElementById('alter').value,
+                                   document.getElementById('weiblich').checked);
+           personen.push(person);
+           document.getElementById('ausgabe').innerHTML = "";
+           document.getElementById('personen-form').reset();
+           //ausgabe();
+        }
+        function ausgabe() {
+           for(var i=0; i<personen.length; i++) {
+              document.getElementById('ausgabe').innerHTML += "<b>Person Nr. " + (i+1) + "</b><br>";
+              document.getElementById('ausgabe').innerHTML += "Nachname: " + personen[i].nachname + "<br>";
+              document.getElementById('ausgabe').innerHTML += "Vorname: " + personen[i].vorname + "<br>";
+              document.getElementById('ausgabe').innerHTML += "Alter: " + personen[i].alter + "<br>";
+              if(personen[i].weiblich == true) {
+                 document.getElementById('ausgabe').innerHTML += "Ist-weiblich: Ja <br><br>";
+              } else {
+                 document.getElementById('ausgabe').innerHTML += "Ist-weiblich: Nein <br><br>";
+              }
+           }
+        }
+        function Person(nachname, vorname, alter, weiblich) {
+           this.nachname = nachname;
+           this.vorname = vorname;
+           this.alter = alter;
+           this.weiblich = weiblich;
+        }
+		
+		
+	</script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="left">
+				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
+			</li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
+			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
+			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+		</ul>
+	</nav>
+	
+		<ul id="dropdown_menu" style="visibility:hidden;">
+			<div id="dropdown_div">
+				<li class="drop" onclick="show_menu('profil-show');ausgabe();">Fahrerprofil auswählen</li>
+				<li class="drop" onclick="show_menu('profil-add')">Fahrerprofil anlegen</li>
+			</div>
+		</ul>
+		
+	 <!-- Inhalt -->
+	 <div class="container">
+      <div id="sos" onclick="location.href='notyet.html';">
+        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
+      </div>
+	  
+	  
+      <p id="line1">
+        <button  id="profil" class="btn" onclick="show_menu('profil-show');ausgabe();">Fahrerprofil</button>
+        <button  id="plus" class="btn" onclick="show_menu('profil-add')" style="float:right;">+</button>
+        
+      </p>
+	  
+	  
+     <!-- Nutzer anlegen -->  
+	 <div id="profil-add" style="visibility:hidden;">
+	 <img id="close" onclick="show_menu('profil-add');" src="x.png" width="60" height="60"/>
+		<h1>Profil hinzufügen</h1>
+	   <form id="personen-form" action="#" method="get">
+       <label for="nachname">Nachname:</label> <input type="text" id="nachname"><br>
+       <label for="vorname">Vorname:</label> <input type="text" id="vorname"><br>
+       <label for="nachname">Alter:</label> <input type="text" id="alter"><br>
+       <label for="weiblich">Geschlecht:</label> <input type="checkbox" id="weiblich" value="ja"> ist-weiblich<br>
+       <input type="submit" value="Speichern" onclick="speichern()" style="margin-left:30%">
+		</form>
+	 </div>
+	 <!-- Nutzer auswählen -->
+	 <div id="profil-show" style="visibility:hidden;">
+	 <img id="close" onclick="show_menu('profil-show');anzeigen();" src="x.png" width="60" height="60"/>
+		<h1>Profil anzeigen</h1>
+		<div id="ausgabe">Kein Nutzerprofil vorhanden.</div>
+	 </div>
+
+    </div> <!-- /container -->
+</body>
+</html>

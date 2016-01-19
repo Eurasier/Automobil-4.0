@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link href="home_style.css" type="text/css" rel="stylesheet">
+	
+	<script>
+		
+		function Zeit(){
+		var d = new Date();
+		document.getElementById("date").innerHTML = d.getDate()+"."+d.getMonth()+"."+d.getFullYear();
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		
+		}
+		var myVar = setInterval(function(){Zeit()},1000);
+		
+		function show_menu(){
+		var menu = document.getElementById('dropdown_menu');
+
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+		}
+		
+		
+	</script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="left">
+				<p onclick="show_menu();">Fahrerprofil</p>
+			</li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
+			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
+			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+		</ul>
+	</nav>
+	
+		<ul id="dropdown_menu" style="visibility:hidden;">
+			<div id="dropdown_div">
+				<li class="drop"><a href="index.html">Fahrerprofil auswählen</a></li>
+				<li class="drop"><a href="index.html">Fahrerprofil anlegen</a></li>
+			</div>
+		</ul>
+		
+	 <!-- Inhalt -->
+	 <div class="container">
+      <div id="sos" onclick="location.href='notyet.html';">
+        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
+      </div>
+	  
+	  
+      <p id="line1">
+        <button class="btn" onclick="location.href='dashboard_einstellungen.html';"><img src="car.png" width="180" height="80" alt="submit"/></button>
+        <button class="btn" onclick="location.href='notyet.html';" style="float:right;"><img src="maps.png" width="110" height="80" alt="submit"/></button>
+        
+      </p>
+       <p>
+        <button class="btn" onclick="location.href='media.html';"><img src="media.png" width="130" height="80" alt="submit"/></button>
+        <button class="btn" onclick="location.href='notyet.html';" style="float:right;"><img src="setup.png" width="120" height="80" alt="submit"/></button>
+      </p>
+
+	  
+
+
+
+<iframe name="iframe_a" width="600" height="600">
+<p>Your browser does not support iframes.</p>
+</iframe>
+
+<a href="https://m.youtube.com" target="iframe_a">www.cnn.com</a>
+
+<p><a href="https://www.whatsapp.com/" target="iframe_a">W3Schools.com</a><a href="https://www.netflix.com/de/" target="iframe_a">www.cnn.com</a></p>
+
+
+
+
+<iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=bbcnews" width="480" height="400"></iframe>                   
+<!-- kanal name eingeben.-->
+
+
+    </div> <!-- /container -->
+</body>
+</html>

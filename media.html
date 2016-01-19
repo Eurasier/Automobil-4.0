@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link href="media_style.css" type="text/css" rel="stylesheet">
+	
+	<script>
+		
+		function Zeit(){
+		var d = new Date();
+		d.setMonth(01);      
+		x = d.getMonth();
+		
+		document.getElementById("date").innerHTML = d.getDate()+"."+x+"."+d.getFullYear();
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		
+		}
+		var myVar = setInterval(function(){Zeit()},1000);
+		
+		function show_menu(id){
+		var menu = document.getElementById(id);
+
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+		}
+		
+		(function() {
+			var cx = '013647768733687739072:pxlimwsnt6q';
+			var gcse = document.createElement('script');
+			gcse.type = 'text/javascript';
+			gcse.async = true;
+			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+			'//cse.google.com/cse.js?cx=' + cx;
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(gcse, s);
+			})();
+		
+		function changeUrl(frame, eingabe){
+		var postfix = document.getElementById(eingabe).value;
+		document.getElementById(frame).src = "http://www.youtube.com/embed/?listType=user_uploads&list=" + postfix;
+		}
+		
+	</script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="left">
+				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
+			</li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
+			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
+			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+		</ul>
+	</nav>
+	
+		<ul id="dropdown_menu" style="visibility:hidden;">
+			<div id="dropdown_div">
+				<li class="drop"><a href="index.html">Fahrerprofil auswählen</a></li>
+				<li class="drop"><a href="index.html">Fahrerprofil anlegen</a></li>
+			</div>
+		</ul>
+		
+	 <!-- Inhalt -->
+	 <div class="container">
+      <div id="sos" onclick="location.href='notyet.html';">
+        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
+      </div>
+	  
+	  
+      <p id="line1" class="lines">
+        <button class="btn" onclick="location.href='notyet.html';"><img src="calendar.png" width="130" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('radio');"><img src="radio.png" width="110" height="80" alt="submit"/></button>
+        <button class="btn" onclick="location.href='notyet.html';"><img src="netflix.png" width="110" height="80" alt="submit"/></button>
+		<button class="btn" onclick="cordova.plugins.Whatsapp.send('1112223333');"><img src="whatsapp.png" width="100" height="80" alt="submit"/></button>
+      </p>
+       <p class="lines">
+        <button class="btn" onclick="location.href='notyet.html';"><img src="mail.png" width="130" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('youtube');"><img src="youtube.png" width="120" height="80" alt="submit"/></button>
+		<button class="btn" onclick="location.href='notyet.html';"><img src="facebook.png" width="90" height="80" alt="submit"/></button>
+		<button class="btn" onclick="show_menu('search_canvas');"><img src="chrome.png" width="130" height="80" alt="submit"/></button>
+      </p>
+	  <p class="lines">
+        <img onclick="location.href='home.html';" src="back.png" width="120" height="120" alt="submit" style="margin-left:0%; position:absolute;top:80%;left:8%;"/>
+        <img onclick="location.href='home.html';" src="home.png" width="80" height="80" alt="submit" style="margin-left:3%; position:absolute;top:83%;left:17%;"/>
+      </p>
+	  
+	  
+	  <div id="search_canvas" style="visibility:hidden;">
+		<img id="close" onclick="show_menu('search_canvas');" src="x.png" width="60" height="60"/>
+		<div id="search_canvas2">
+			<gcse:searchbox></gcse:searchbox>
+			<div style="visibility:hidden;">
+				<gcse:searchresults ></gcse:searchresults>
+			</div>	
+		</div>
+	  </div>
+
+	  <div id="youtube" style="visibility:hidden;">
+		<img id="close" onclick="show_menu('youtube');" src="x.png" width="60" height="60"/>
+		<div>
+				<div style="color:white" id="ytSearch">Kanalname eingeben:<input type="text" id="youtubeEingabe"/><button onclick="changeUrl('youtubeFrame','youtubeEingabe')">Absenden</button></div>
+				<iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=bbcnews" id="youtubeFrame" width="480" height="400"></iframe> 
+
+		</div>
+	  </div>
+	  
+	  <div id="radio" style="visibility:hidden;">
+		<img id="close" onclick="show_menu('radio');" src="x.png" width="60" height="60"/>
+		<div>
+				<iframe src="http://radio.de/" id="radioFrame" width="780" height="130" scrolling="no"></iframe> 
+		</div>
+	  </div>
+	  
+    </div> <!-- /container -->
+</body>
+</html>
