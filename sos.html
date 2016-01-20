@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link href="sos_style.css" type="text/css" rel="stylesheet">
+	
+	<script>
+		
+		function Zeit(){
+		var d = new Date();      
+		x = d.getMonth();
+		x += 1;
+		
+		document.getElementById("date").innerHTML = d.getDate()+".0"+x+"."+d.getFullYear();
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		
+		}
+		var myVar = setInterval(function(){Zeit()},1000);
+		
+		function show_menu(id){
+		var menu = document.getElementById(id);
+
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+		}
+	</script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="left">
+				<p>Fahrerprofil</p>
+			</li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
+			<li class="right"><a href="#" id="date">00.00.0000</a><li>
+			<li class="right"><a href="#" id="time">00:00:00</a></li>
+		</ul>
+	</nav>
+		
+		
+	 <!-- Inhalt -->
+	 <div class="container">
+      <div id="sos">
+        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
+      </div>
+	  
+	  <div id="help">
+			<p>Soll der Notruf verständigt werden?</p><br>
+			<button id="ok">Okay</button>
+			<button id="cancel">Abbrechen</button>
+	  </div>
+    </div> <!-- /container -->
+	
+	<div id="help_container">
+		<div id="help">
+			<h1>Soll der Notruf verständigt werden?</h1><br>
+			<button id="ok" style="width:20%;height:20%;margin-top:20%;"  onclick="show_menu('meldung');">Okay</button>
+			<button id="cancel" style="width:20%;height:20%;margin-top:20%;margin-left:5%;" onclick="location.href='pre_home.html';">Abbrechen</button>
+		</div>
+		<h1 id="meldung" style="color:white;visibility:hidden;">Der Notruf wurde verständigt! Bitte bewahren Sie Ruhe!</h1>
+	</div>
+</body>
+</html>

@@ -86,6 +86,7 @@ p{
 	text-shadow: 2px 2px 4px #000000;
 	box-shadow: 10px 10px 5px #000000;
 	color:white;
+	opacity: 0.9;
 	//transparent
 }
 #sos{
@@ -146,4 +147,18 @@ p{
 	position:absolute;
 	top:70%;
 	left:60%;
+}
+#einstellungen{
+	width:68px;
+	height:68px;
+	style:opacity:0.8;
+	
+}
+#btsetup{
+	position:absolute;
+	top:80%;
+	left:90%;
+	width:82px;
+	height:82px;
+	border-radius:30%;
 }

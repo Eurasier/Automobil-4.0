@@ -8,7 +8,6 @@ body{
 	background-image:url(carbon.jpg);
 	background-repeat: no-repeat;
     background-size: 100%;
-	 	
 }
 .right{
 	float:right;
@@ -82,25 +81,17 @@ p{
 	clear:both;
 }
 .btn{
+	width:25%;
 	height:120px;
 	color:white;
-	text-align:center;
+	margin-top:1%;
+	margin-left:8%;
 	background-image:url(alu2.jpg);
 	background-repeat: no-repeat;
 	border:1px solid white;
 	text-shadow: 2px 2px 4px #000000;
 	box-shadow: 10px 10px 5px #000000;
-}
-#profil{
-	width:40%;
-	margin-left:12%;
-	font-size: 500%;
-	
-}
-#plus{
-	width:20%;
-	margin-right:24%;
-	font-size: 700%;
+
 }
 #sos{
 	border:1px solid white;
@@ -115,39 +106,81 @@ p{
 	text-shadow: 2px 2px 4px #000000;
 	box-shadow: 10px 10px 5px #000000;
 }
+#functions{
+	width:78%;
+	height:190px;
+	margin-left:5%;
+	margin-right:5%;
+	background-image:url(alu2.jpg);
+	background-repeat: no-repeat;
+	border:1px solid white;
+	text-shadow: 2px 2px 4px #000000;
+	color:white;
+	box-shadow: 10px 10px 5px #000000;
+}
+.klima{
+	font-size:150%;
+	color:white;
+	position:absolute;
+	margin-top:0%;
+	margin-left:4%;
+}
+.klimastufe{
+	font-size:150%;
+	margin-top:5%;
+	margin-left:8.5%;
+}
+.sitz{
+	font-size:150%;
+	color:white;
+	position:absolute;
+	margin-top:-17%;
+	margin-left:28%;
+}
+.sitzstufe{
+	font-size:150%;
+	margin-top:-18%;
+	margin-left:38%;
+}
+.range{
+	width:20%; 
+	box-shadow: 10px 10px 5px #000000; 
+	border:1px solid white; 
+	background: linear-gradient(to right, blue, red);
+}
+#temp{
+	width:2%;
+	heigth:333%;
+	position:absolute;
+	margin-top:0%;
+	margin-left:2%;
+	box-shadow: 10px 10px 5px #000000;
+}
+#menu{
+	font-size: 500%;
+}
 #white{
 	color:white;
 }
-#profil-add{
-	/*font-size:10%;*/
-	color:white;
-	height:50%;
-	width:50%;
-	background-color:rgba(0, 0, 0, 0.8);
+#twittera{
+	magin-top:0%;
+	margin-left:50%;
+}
+.twitterborder {
 	position:absolute;
-	top:30%;
-	left:30%;
-	border-radius:15px;
+	top:35%;
+	left:70%;
+    width:25%;
+    height:60%;
+    background:white;
+    text-align: center;
 }
-#profil-show{
-	/*font-size:10%;*/
-	color:white;
-	height:30%;
-	width:50%;
-	background-color:rgba(0, 0, 0, 0.8);
-	position:absolute;
-	top:30%;
-	left:30%;
-	border-radius:15px;
+.table{
+    display:table;
+    height: 100%;
+    width: 100%;
 }
-label{
-	width:100px;
-	display:inline-block;
-	margin:1%;
+.table-cell{
+    display:table-cell;
+    vertical-align: middle;
 }
-#close{
-		visibility:visibile;
-		color:yellow;
-		background-color:yellow;
-}
-

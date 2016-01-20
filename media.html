@@ -7,11 +7,11 @@
 	<script>
 		
 		function Zeit(){
-		var d = new Date();
-		d.setMonth(01);      
+		var d = new Date();      
 		x = d.getMonth();
+		x += 1;
 		
-		document.getElementById("date").innerHTML = d.getDate()+"."+x+"."+d.getFullYear();
+		document.getElementById("date").innerHTML = d.getDate()+".0"+x+"."+d.getFullYear();
 		document.getElementById("time").innerHTML = d.toLocaleTimeString();
 		
 		}
@@ -20,10 +20,10 @@
 		function show_menu(id){
 		var menu = document.getElementById(id);
 
-		if(menu.style.visibility == 'visible'){
-			menu.style.visibility = 'hidden';
+		if(menu.style.display == 'block'){
+			menu.style.display = 'none';
 		}else {
-			menu.style.visibility = 'visible';
+			menu.style.display = 'block';
 		}
 		}
 		
@@ -52,12 +52,12 @@
 				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
 			</li>
 			<li class="left"><a href="home.html">Automobil 4.0</a></li>
-			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
-			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+			<li class="right"><a href="#" id="date">00.00.0000</a><li>
+			<li class="right"><a href="#" id="time">00:00:00</a></li>
 		</ul>
 	</nav>
 	
-		<ul id="dropdown_menu" style="visibility:hidden;">
+		<ul id="dropdown_menu" style="display:none;">
 			<div id="dropdown_div">
 				<li class="drop"><a href="index.html">Fahrerprofil auswählen</a></li>
 				<li class="drop"><a href="index.html">Fahrerprofil anlegen</a></li>
@@ -66,7 +66,7 @@
 		
 	 <!-- Inhalt -->
 	 <div class="container">
-      <div id="sos" onclick="location.href='notyet.html';">
+      <div id="sos" onclick="location.href='sos.html';">
         <img src="SOS.png" width="25%" height="110%" alt="submit"/>
       </div>
 	  
@@ -74,13 +74,13 @@
       <p id="line1" class="lines">
         <button class="btn" onclick="location.href='notyet.html';"><img src="calendar.png" width="130" height="80" alt="submit"/></button>
         <button class="btn" onclick="show_menu('radio');"><img src="radio.png" width="110" height="80" alt="submit"/></button>
-        <button class="btn" onclick="location.href='notyet.html';"><img src="netflix.png" width="110" height="80" alt="submit"/></button>
-		<button class="btn" onclick="cordova.plugins.Whatsapp.send('1112223333');"><img src="whatsapp.png" width="100" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('watchever');"><img src="watchever.png" width="110" height="80" alt="submit"/></button>
+		<button class="btn" onclick="show_menu('whatsapp');"><img src="whatsapp.png" width="100" height="80" alt="submit"/></button>
       </p>
        <p class="lines">
         <button class="btn" onclick="location.href='notyet.html';"><img src="mail.png" width="130" height="80" alt="submit"/></button>
         <button class="btn" onclick="show_menu('youtube');"><img src="youtube.png" width="120" height="80" alt="submit"/></button>
-		<button class="btn" onclick="location.href='notyet.html';"><img src="facebook.png" width="90" height="80" alt="submit"/></button>
+		<button class="btn" onclick="location.href='pre_home.html';"><img src="twitter.png" width="90" height="80" alt="submit"/></button>
 		<button class="btn" onclick="show_menu('search_canvas');"><img src="chrome.png" width="130" height="80" alt="submit"/></button>
       </p>
 	  <p class="lines">
@@ -89,7 +89,7 @@
       </p>
 	  
 	  
-	  <div id="search_canvas" style="visibility:hidden;">
+	  <div id="search_canvas" style="display:none;">
 		<img id="close" onclick="show_menu('search_canvas');" src="x.png" width="60" height="60"/>
 		<div id="search_canvas2">
 			<gcse:searchbox></gcse:searchbox>
@@ -99,19 +99,34 @@
 		</div>
 	  </div>
 
-	  <div id="youtube" style="visibility:hidden;">
+	  <div id="youtube" style="display:none;">
 		<img id="close" onclick="show_menu('youtube');" src="x.png" width="60" height="60"/>
 		<div>
 				<div style="color:white" id="ytSearch">Kanalname eingeben:<input type="text" id="youtubeEingabe"/><button onclick="changeUrl('youtubeFrame','youtubeEingabe')">Absenden</button></div>
-				<iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=bbcnews" id="youtubeFrame" width="480" height="400"></iframe> 
+				<iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=bbcnews" id="youtubeFrame" width="80%" height="77%"></iframe> 
 
 		</div>
 	  </div>
 	  
-	  <div id="radio" style="visibility:hidden;">
+	  <div id="radio" style="display:none;">
 		<img id="close" onclick="show_menu('radio');" src="x.png" width="60" height="60"/>
 		<div>
-				<iframe src="http://radio.de/" id="radioFrame" width="780" height="130" scrolling="no"></iframe> 
+				<iframe src="http://radio.de/" id="radioFrame" width="96%" height="42%" scrolling="no"></iframe> 
+		</div>
+	  </div>
+	  
+	  <div id="watchever" style="display:none;">
+		<img id="close" onclick="show_menu('watchever');" src="x.png" width="60" height="60"/>
+		<div>
+				<iframe src="http://www.watchever.de/" id="youtubeFrame" width="80%" height="77%"></iframe>
+		</div>
+	  </div>
+	  
+	  
+	<div id="whatsapp" style="display:none;">
+		<img id="close" onclick="show_menu('whatsapp');" src="x.png" width="60" height="60"/>
+		<div>
+				<iframe src="https://www.whatsapp.com/?l=de" id="whatsappFrame" width="90%" height="90%"></iframe>
 		</div>
 	  </div>
 	  

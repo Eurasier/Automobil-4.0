@@ -14,8 +14,8 @@
 		}
 		var myVar = setInterval(function(){Zeit()},1000);
 		
-		function show_menu(){
-		var menu = document.getElementById('dropdown_menu');
+		function show_menu(id){
+		var menu = document.getElementById(id);
 
 		if(menu.style.visibility == 'visible'){
 			menu.style.visibility = 'hidden';
@@ -24,18 +24,21 @@
 		}
 		}
 		
-		
+		function showValue(newValue){
+			document.getElementById("druck").innerHTML=newValue;		
+		}
+
 	</script>
 </head>
 <body>
 	<nav>
 		<ul>
 			<li class="left">
-				<p onclick="show_menu();">Fahrerprofil</p>
+				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
 			</li>
 			<li class="left"><a href="home.html">Automobil 4.0</a></li>
-			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
-			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+			<li class="right"><a href="#" id="date">00.00.0000</a><li>
+			<li class="right"><a href="#" id="time">00:00:00</a></li>
 		</ul>
 	</nav>
 	
@@ -48,27 +51,78 @@
 		
 	 <!-- Inhalt -->
 	 <div class="container">
-      <div id="sos" onclick="location.href='notyet.html';">
+      <div id="sos" onclick="location.href='sos.html';">
         <img src="SOS.png" width="25%" height="110%" alt="submit"/>
       </div>
 	  
 	  
       <p id="line1" class="lines">
-        <button class="btn" onclick="location.href='notyet.html';"><img src="ac.png" width="120" height="80" alt="submit"/></button>
-        <button class="btn" onclick="location.href='notyet.html';"><img src="reifendruck.png" width="110" height="80" alt="submit"/></button>
-        <button class="btn" onclick="location.href='notyet.html';"><img src="bildschirm.png" width="130" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('licht');"><img src="ac.png" width="120" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('reifendruck');"><img src="reifendruck.png" width="110" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('tvaktiv');"><img src="bildschirm.png" width="130" height="80" alt="submit"/></button>
       </p>
        <p id="line2" class="lines">
-        <button class="btn" onclick="location.href='notyet.html';"><img src="stossdaempfer.png" width="130" height="80" alt="submit"/></button>
-        <button class="btn" onclick="location.href='notyet.html';"><img src="spiegel.png" width="120" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('stoss');"><img src="stossdaempfer.png" width="130" height="80" alt="submit"/></button>
+        <button class="btn" onclick="show_menu('spiegel');"><img src="spiegel.png" width="120" height="80" alt="submit"/></button>
       </p>
 	  <p class="lines">
         <img onclick="location.href='home.html';" src="back.png" width="120" height="120" alt="submit" style="margin-left:0%; position:absolute;top:80%;left:8%;"/>
         <img onclick="location.href='home.html';" src="home.png" width="80" height="80" alt="submit" style="margin-left:3%; position:absolute;top:83%;left:17%;"/>
       </p>
 	  
-
-
+	  <div id="licht" style="visibility:hidden;">
+		<img id="close" onclick="show_menu('licht');" src="x.png" width="60" height="60"/>
+		<form id="lichtstufe">
+			<input type="radio" name="licht" value="0" checked>OFF<br>
+			<input type="radio" name="licht" value="1">Abblendfunktion<br>
+			<input type="radio" name="licht" value="2">Kurvenfahrlicht<br>
+			<input type="radio" name="licht" value="3">Tagfahrlicht<br>
+			<input type="submit" value="Speichern"><br>
+		</form>
+	  </div>
+	  
+	  <div id="reifendruck" style="visibility:hidden;">
+	  <img id="close" onclick="show_menu('reifendruck');" src="x.png" width="60" height="60"/>
+		<input type="range" class="range" min="1" max="3" value="2.1" step="0.1" onchange="showValue(this.value)"/>
+			<textarea id="druck">2.1</textarea>
+		<form id="reifenstufe">
+			<input type="radio" name="reifen" value="0" checked>vorne<br>
+			<input type="radio" name="reifen" value="1">hinten<br>
+			<input type="submit" value="Speichern"><br>
+		</form>
+	  </div>
+	  
+	  <div id="tvaktiv" style="visibility:hidden;">
+	  <img id="close" onclick="show_menu('tvaktiv');" src="x.png" width="60" height="60"/>
+		<form id="tvaktivstufe">
+			<input type="radio" name="position" value="0" checked>vorne<br>
+			<input type="radio" name="position" value="1">hinten<br>
+			<input type="radio" name="status" value="2">an<br>
+			<input type="radio" name="status" value="3">aus<br>
+			<input type="submit" value="Speichern"><br>
+		</form>
+	  </div>
+	  
+	  <div id="stoss" style="visibility:hidden;">
+	  <img id="close" onclick="show_menu('stoss');" src="x.png" width="60" height="60"/>
+		<form id="stossstufe">
+			<input type="radio" name="fahrwerk" value="0" checked>comfort +<br>
+			<input type="radio" name="fahrwerk" value="1">comfort<br>
+			<input type="radio" name="fahrwerk" value="2">sport<br>
+			<input type="radio" name="fahrwerk" value="3">sport +<br>
+			<input type="submit" value="Speichern"><br>
+		</form>
+	  </div>
+	  
+	  <div id="spiegel" style="visibility:hidden;">
+	  <img id="close" onclick="show_menu('spiegel');" src="x.png" width="60" height="60"/>
+		<input type="range" class="range" min="0" max="10" value="5" step="0.1"/>
+		<form id="spiegelstufe">
+			<input type="radio" name="spiegel" value="0" checked>rechts<br>
+			<input type="radio" name="spiegel" value="1">links<br>
+			<input type="submit" value="Speichern"><br>
+		</form>
+	  </div>
     </div> <!-- /container -->
 </body>
 </html>

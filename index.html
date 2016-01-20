@@ -3,12 +3,17 @@
 <head>
 	<meta charset="UTF-8"/>
 	<link href="index_style.css" type="text/css" rel="stylesheet">
+	<link href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	
 	<script>
 		
 		function Zeit(){
-		var d = new Date();
-		document.getElementById("date").innerHTML = d.getDate()+"."+d.getMonth()+"."+d.getFullYear();
+		var d = new Date();      
+		x = d.getMonth();
+		x += 1;
+		
+		document.getElementById("date").innerHTML = d.getDate()+".0"+x+"."+d.getFullYear();
 		document.getElementById("time").innerHTML = d.toLocaleTimeString();
 		
 		}
@@ -55,6 +60,74 @@
            this.weiblich = weiblich;
         }
 		
+		window.onload = function aufrufen(){
+		
+		db = window.openDatabase("datenbank" ,  "1.0" , "DB" , 1000000);
+		
+		document.getElementById("klick").onclick = function() {
+		
+			db.transaction(populateDB);
+		
+		}
+		
+		document.getElementById("profil_auswahl").onclick = function() {
+			
+			db.transaction(auswahl)
+			
+		}
+		
+		document.getElementById("profil").onclick = function() {
+			
+		var menu = document.getElementById("profil-show");
+		
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+			
+			db.transaction(ausgabe);
+			
+		}
+				
+		function populateDB(tx) {
+			
+		var _nutzername = document.getElementById("nutzername").value;
+		
+    	//tx.executeSql('DROP TABLE IF EXISTS BENUTZER');
+    	tx.executeSql('CREATE TABLE IF NOT EXISTS BENUTZER (nutzername string , temperatur double , sitzheitzung integer , lueftergeschwindigkeit integer , linker_spiegel integer , rechter_spiegel , reifendruck double , scheibenwischer integer , profil_aktiv integer)');
+    	tx.executeSql('INSERT INTO BENUTZER (nutzername , linker_spiegel , rechter_spiegel , reifendruck , scheibenwischer) VALUES (? , 2 , 3 , 1.7 , 2)' , [_nutzername]);
+	}
+	
+		function auswahl(tx) {
+			
+		var profil = document.getElementById("ausgeben").value;
+		
+		tx.executeSql('UPDATE BENUTZER SET profil_aktiv = 0')
+		tx.executeSql('UPDATE BENUTZER SET profil_aktiv = 1 WHERE nutzername= ?' , [profil])
+		location.reload();
+		location.href = "pre_home.html";
+			
+		}
+	
+	    function ausgabe(tx) {
+	        	
+	    tx.executeSql('SELECT nutzername FROM BENUTZER' , [] , querySuccess);  
+            }
+           
+     function querySuccess (tx , results) {
+		
+		var len = results.rows.length;
+		document.getElementById("ausgeben").innerHTML = ""
+		for (var i=0; i<len; i++) {
+			
+			document.getElementById("ausgeben").innerHTML += "<option>" + results.rows.item(i).nutzername + "</option>"
+            
+		}
+		
+	}
+		
+        }
 		
 	</script>
 </head>
@@ -65,8 +138,8 @@
 				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
 			</li>
 			<li class="left"><a href="home.html">Automobil 4.0</a></li>
-			<li class="right"><a href="notyet.html" id="date">00.00.0000</a><li>
-			<li class="right"><a href="notyet.html" id="time">00:00:00</a></li>
+			<li class="right"><a href="#" id="date">00.00.0000</a><li>
+			<li class="right"><a href="#" id="time">00:00:00</a></li>
 		</ul>
 	</nav>
 	
@@ -79,7 +152,7 @@
 		
 	 <!-- Inhalt -->
 	 <div class="container">
-      <div id="sos" onclick="location.href='notyet.html';">
+      <div id="sos" onclick="location.href='sos.html';">
         <img src="SOS.png" width="25%" height="110%" alt="submit"/>
       </div>
 	  
@@ -95,19 +168,19 @@
 	 <div id="profil-add" style="visibility:hidden;">
 	 <img id="close" onclick="show_menu('profil-add');" src="x.png" width="60" height="60"/>
 		<h1>Profil hinzufügen</h1>
-	   <form id="personen-form" action="#" method="get">
-       <label for="nachname">Nachname:</label> <input type="text" id="nachname"><br>
-       <label for="vorname">Vorname:</label> <input type="text" id="vorname"><br>
-       <label for="nachname">Alter:</label> <input type="text" id="alter"><br>
-       <label for="weiblich">Geschlecht:</label> <input type="checkbox" id="weiblich" value="ja"> ist-weiblich<br>
-       <input type="submit" value="Speichern" onclick="speichern()" style="margin-left:30%">
+	   <form id="personen-form">
+       <label for="nutzername">Nutzername:</label> <input type="text" id="nutzername"><br>
+              <input type="submit" value="submit"; id="klick" style="margin-left:30%">
 		</form>
 	 </div>
 	 <!-- Nutzer auswählen -->
 	 <div id="profil-show" style="visibility:hidden;">
-	 <img id="close" onclick="show_menu('profil-show');anzeigen();" src="x.png" width="60" height="60"/>
+	 <img id="close" onclick="show_menu('profil-show');" src="x.png" width="60" height="60"/>
 		<h1>Profil anzeigen</h1>
-		<div id="ausgabe">Kein Nutzerprofil vorhanden.</div>
+		<div id="ausgabe">
+			<select id="ausgeben"></select>
+			<button id="profil_auswahl">auswählen</button>
+		</div>
 	 </div>
 
     </div> <!-- /container -->

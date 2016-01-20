@@ -118,4 +118,97 @@ p{
 #white{
 	color:white;
 }
-
+#close{
+	visibility:visibile;
+	color:yellow;
+	background-color:yellow;
+}
+#licht{
+	height:40%;
+	width:25%;
+	background-color:rgba(0, 0, 0, 0.8);
+	position:absolute;
+	top:30%;
+	left:30%;
+	border-radius:15px;
+	color:white
+}
+#lichtstufe{
+	font-size:150%;
+	margin-top:5%;
+	margin-left:8.5%;
+}
+#reifendruck{
+	height:40%;
+	width:30%;
+	background-color:rgba(0, 0, 0, 0.8);
+	position:absolute;
+	top:30%;
+	left:30%;
+	border-radius:15px;
+	color:white
+}
+#reifenstufe{
+	font-size:150%;
+	margin-top:3%;
+	margin-left:5%;
+}
+.range{
+	width:30%; 
+	box-shadow: 10px 10px 5px #000000; 
+	border:1px solid white; 
+	background-color:black;
+}
+#druck{
+	width:8%;
+	heigth:3%;
+	position:absolute;
+	margin-top:0.5%;
+	margin-left:2%;
+	box-shadow: 10px 10px 5px #000000;
+}
+#tvaktiv{
+	height:40%;
+	width:25%;
+	background-color:rgba(0, 0, 0, 0.8);
+	position:absolute;
+	top:30%;
+	left:30%;
+	border-radius:15px;
+	color:white
+}
+#tvaktivstufe{
+	font-size:150%;
+	margin-top:5%;
+	margin-left:8.5%;
+}
+#stoss{
+	height:40%;
+	width:25%;
+	background-color:rgba(0, 0, 0, 0.8);
+	position:absolute;
+	top:30%;
+	left:30%;
+	border-radius:15px;
+	color:white
+}
+#stossstufe{
+	font-size:150%;
+	margin-top:5%;
+	margin-left:8.5%;
+}
+#spiegel{
+	height:40%;
+	width:25%;
+	background-color:rgba(0, 0, 0, 0.8);
+	position:absolute;
+	top:30%;
+	left:30%;
+	border-radius:15px;
+	color:white	
+}
+#spiegelstufe{
+	font-size:150%;
+	margin-top:5%;
+	margin-left:8.5%;
+}

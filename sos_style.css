@@ -78,30 +78,6 @@ p{
 
 /*Button-Section/Dokumentinhalt*/
 
-#line1{
-	clear:both;
-}
-.btn{
-	height:120px;
-	color:white;
-	text-align:center;
-	background-image:url(alu2.jpg);
-	background-repeat: no-repeat;
-	border:1px solid white;
-	text-shadow: 2px 2px 4px #000000;
-	box-shadow: 10px 10px 5px #000000;
-}
-#profil{
-	width:40%;
-	margin-left:12%;
-	font-size: 500%;
-	
-}
-#plus{
-	width:20%;
-	margin-right:24%;
-	font-size: 700%;
-}
 #sos{
 	border:1px solid white;
 	width:35%;
@@ -118,36 +94,38 @@ p{
 #white{
 	color:white;
 }
-#profil-add{
-	/*font-size:10%;*/
-	color:white;
-	height:50%;
-	width:50%;
-	background-color:rgba(0, 0, 0, 0.8);
-	position:absolute;
-	top:30%;
-	left:30%;
-	border-radius:15px;
-}
-#profil-show{
-	/*font-size:10%;*/
-	color:white;
-	height:30%;
-	width:50%;
-	background-color:rgba(0, 0, 0, 0.8);
-	position:absolute;
-	top:30%;
-	left:30%;
-	border-radius:15px;
-}
-label{
-	width:100px;
-	display:inline-block;
-	margin:1%;
-}
+
 #close{
 		visibility:visibile;
 		color:yellow;
 		background-color:yellow;
 }
-
+#help{
+	height:50%;
+	width:50%;
+	position:absolute;
+	left:20%;
+	top:20%;
+	padding:5;
+	background-color:#FF0000;
+	text-shadow: 2px 2px 4px #000000;
+	box-shadow: 10px 10px 5px #000000;
+	border-radius:15%;
+	text-align:center;
+	color:white;
+}
+#help_container{
+	height:100%;
+	width:100%;
+	background-color:rgba(0, 0, 0, 0.7);
+	position:absolute;
+	left:0%;
+	top:0%;
+}
+#meldung{
+	color:white;
+	text-shadow: 2px 2px 4px #000000;
+	position:absolute;
+	top:80%;
+	left:20%;
+}

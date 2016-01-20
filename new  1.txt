@@ -1,0 +1,7 @@
+nutzername
+temperatur: komma 5
+Sitzheizung: 
+Lüftergeschwindigkeit
+linkerspiegel
+rechterspiegel
+reifendruck

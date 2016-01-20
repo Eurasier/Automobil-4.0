@@ -138,7 +138,7 @@ p{
 }
 #youtube{
 		height:80%;
-		width:45%;
+		width:50%;
 		background-color:rgba(0, 0, 0, 0.8);
 		position:absolute;
 		top:15%;
@@ -170,4 +170,34 @@ p{
 		position:absolute;
 		top:6%;
 		left:12%;
+}
+#watchever{
+		height:40%;
+		width:60%;
+		background-color:rgba(0, 0, 0, 0.8);
+		position:absolute;
+		top:35%;
+		left:30%;
+		border-radius:15px;
+	}
+
+#watcheverFrame{
+		position:absolute;
+		top:25%;
+		left:1%;
+}
+#whatsapp{
+		height:70%;
+		width:65%;
+		background-color:rgba(0, 0, 0, 0.8);
+		position:absolute;
+		top:20%;
+		left:18%;
+		border-radius:15px;
+	}
+
+#whatsappFrame{
+		position:absolute;
+		top:8%;
+		left:8%;
 }

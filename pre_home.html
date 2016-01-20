@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link href="pre_home_style.css" type="text/css" rel="stylesheet">
+	
+	<script>
+		
+		function Zeit(){
+		var d = new Date();      
+		x = d.getMonth();
+		x += 1;
+		
+		document.getElementById("date").innerHTML = d.getDate()+".0"+x+"."+d.getFullYear();
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		
+		}
+		var myVar = setInterval(function(){Zeit()},1000);
+		
+		function show_menu(id){
+		var menu = document.getElementById(id);
+
+		if(menu.style.visibility == 'visible'){
+			menu.style.visibility = 'hidden';
+		}else {
+			menu.style.visibility = 'visible';
+		}
+		}
+		
+		function showValue(newValue){
+			document.getElementById("temp").innerHTML=newValue;		
+		}
+		
+		window.onload = function() {
+			
+			var val = 0;
+			var val2 = 0;
+			var val3 = 0;
+				
+			db = window.openDatabase("datenbank" ,  "1.0" , "DB" , 1000000);
+				
+			document.getElementById("submit").onclick = function (){
+				
+				if (document.getElementById("stufeklima2").checked) {
+					val = 1;
+				}
+				
+				if (document.getElementById("stufeklima3").checked) {
+					val = 2;
+				}
+				
+				if (document.getElementById("stufeklima4").checked) {
+					val = 3;
+				}
+				
+				if (document.getElementById("stufe2").checked) {
+					val3 = 1;
+				}
+				
+				if (document.getElementById("stufe3").checked) {
+					val3 = 2;
+				}
+				
+				if (document.getElementById("stufe4").checked) {
+					val3 = 3;
+				}
+			
+				val2 = document.getElementById("temp").innerHTML;
+				
+				db.transaction(submit_to_db);
+				
+				location.reload();
+			}
+			
+			function submit_to_db(tx) {
+				
+				tx.executeSql('UPDATE BENUTZER SET temperatur=? , sitzheitzung=? , lueftergeschwindigkeit=? WHERE profil_aktiv = 1' , [val2 , val3 , val]);
+				
+			} 
+		
+		}
+			
+	</script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="left">
+				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
+			</li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
+			<li class="right"><a href="#" id="date">00.00.0000</a><li>
+			<li class="right"><a href="#" id="time">00:00:00</a></li>
+		</ul>
+	</nav>
+	
+		<ul id="dropdown_menu" style="visibility:hidden;">
+			<div id="dropdown_div">
+				<li class="drop"><a href="index.html">Fahrerprofil auswählen</a></li>
+				<li class="drop"><a href="index.html">Fahrerprofil anlegen</a></li>
+			</div>
+		</ul>
+		
+	 <!-- Inhalt -->
+	 <div class="container">
+      <div id="sos" onclick="location.href='sos.html';">
+        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
+      </div>
+		<div id="functions">
+		<p id="line1">
+			<input type="range" class="range" min="15" max="40" value="21" step="0.5" onchange="showValue(this.value)"/>
+			<textarea id="temp">21</textarea>
+			<p class="klima">Klimaanlagensteuerung</p>
+			<div class="klimastufe">
+				<form>
+					<input type="radio" id="stufeklima1" name="StufeKlima" checked>Auto<br>
+					<input type="radio" id="stufeklima2" name="StufeKlima" >Stufe 1<br>
+					<input type="radio" id="stufeklima3" name="StufeKlima" >Stufe 2<br>
+					<input type="radio" id="stufeklima4" name="StufeKlima" >Stufe 3<br>
+				</form>
+			</div>
+			
+			<p class="sitz">Sitzheizung</p>
+			<div class="sitzstufe">
+				<form>
+					<input type="radio" id="stufe1" name="Stufe" checked>OFF<br>
+					<input type="radio" id="stufe2" name="Stufe" >Stufe 1<br>
+					<input type="radio" id="stufe3" name="Stufe" >Stufe 2<br>
+					<input type="radio" id="stufe4" name="Stufe" >Stufe 3<br>
+				</form>
+			</div>
+			<button id="submit">Submit</button>
+			
+			
+			<div class="twitterborder">
+				<div class="table">
+			<div class="table-cell">
+				<a class="twitter-timeline tw-align-center" href="https://twitter.com/BREAKINGNEWS" data-widget-id="689471668163579904" width=100% height=100%></a>
+
+    <script>
+   !function(d,s,id)
+    {
+        var js,fjs=d.getElementsByTagName(s)[0],
+        p=/^http:/.test(d.location)?'http':'https';
+        if(!d.getElementById(id)) 
+        {
+            js=d.createElement(s);
+            js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }
+    (document,"script","twitter-wjs");
+  </script>
+        </div>
+    </div>
+</div>
+		
+		</p>
+		</div>
+		<p id="line1">
+			<button class="btn" onclick="location.href='maps.html';" style="float:left;"><img src="maps.png" width="110" height="80" alt="submit"/></button>
+			<button class="btn" id="menu" onclick="location.href='home.html';" style="float:left;" alt="submit">Menü</button>
+		</p>
+    </div> <!-- /container -->
+</body>
+</html>

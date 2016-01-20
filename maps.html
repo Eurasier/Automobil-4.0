@@ -3,17 +3,13 @@
 <head>
 	<meta charset="UTF-8"/>
 	<link href="home_style.css" type="text/css" rel="stylesheet">
-	
 	<script>
-		
 		function Zeit(){
 		var d = new Date();      
 		x = d.getMonth();
 		x += 1;
-		
 		document.getElementById("date").innerHTML = d.getDate()+".0"+x+"."+d.getFullYear();
 		document.getElementById("time").innerHTML = d.toLocaleTimeString();
-		
 		}
 		var myVar = setInterval(function(){Zeit()},1000);
 		
@@ -26,9 +22,43 @@
 			menu.style.visibility = 'visible';
 		}
 		}
-		
-		
 	</script>
+    <style>
+    	html,body{
+    		width:100%;
+    		height:100%;
+    		margin: 0;
+    		padding: 0;
+    	}
+      #map {
+        width: 800px;
+        height: 500px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+      	var longitude = 8.2119;
+      	var latitude = 48.0500;
+      	if ("geolocation" in navigator) {
+  			/* geolocation is available */
+  			navigator.geolocation.getCurrentPosition(function(position) {
+  				latitude = position.coords.latitude;
+  				longitude = position.coords.longitude;
+			});
+		} else {
+  		/* geolocation IS NOT available */
+		}
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(latitude, longitude),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </head>
 <body>
 	<nav>
@@ -36,7 +66,7 @@
 			<li class="left">
 				<p onclick="show_menu('dropdown_menu');">Fahrerprofil</p>
 			</li>
-			<li class="left"><a href="pre_home.html">Automobil 4.0</a></li>
+			<li class="left"><a href="home.html">Automobil 4.0</a></li>
 			<li class="right"><a href="#" id="date">00.00.0000</a><li>
 			<li class="right"><a href="#" id="time">00:00:00</a></li>
 		</ul>
@@ -50,22 +80,8 @@
 		</ul>
 		
 	 <!-- Inhalt -->
-	 <div class="container">
-      <div id="sos" onclick="location.href='sos.html';">
-        <img src="SOS.png" width="25%" height="110%" alt="submit"/>
-      </div>
-	  
-	  
-      <p id="line1">
-        <button class="btn" onclick="location.href='dashboard.html';"><img src="car.png" width="180" height="80" alt="submit"/></button>
-        <button class="btn" onclick="location.href='maps.html';" style="float:right;"><img src="maps.png" width="110" height="80" alt="submit"/></button>
-        
-      </p>
-       <p>
-        <button class="btn" onclick="location.href='media.html';"><img src="media.png" width="130" height="80" alt="submit"/></button>
-        <button class="btn" onclick="location.href='dashboard_einstellungen.html';" style="float:right;"><img src="setup.png" width="120" height="80" alt="submit"/></button>
-      </p>
-
+	 <div class="container" align="center">
+	   <div id="map"></div>
     </div> <!-- /container -->
 </body>
 </html>
